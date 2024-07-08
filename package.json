@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@primer/octicons": "13.0.0",
-    "vue": "3.4.21"
+    "vue": "3.4.21",
+    "vue-router": "4.4.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "1.5.0",
