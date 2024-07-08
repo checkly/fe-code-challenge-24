@@ -76,3 +76,11 @@ import Icon from './src/components/library/icon'
 ```bash
 $ npm run storybook
 ```
+
+### Backend
+
+Consume the data provided by the mock API
+
+```bash
+$ npm run backend
+```

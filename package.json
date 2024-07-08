@@ -15,7 +15,7 @@
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "backend": "json-server backend.js"
+    "backend": "node backend.js && json-server db.json"
   },
   "dependencies": {
     "@primer/octicons": "13.0.0",
