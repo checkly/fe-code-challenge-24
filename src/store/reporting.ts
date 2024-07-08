@@ -1,18 +1,8 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
-
-interface Check {
-  id: string
-  name: string
-  type: 'BROWSER' | 'API'
-  success: number
-  avg: number
-  p95: number
-  p99: number
-}
+import { useAsyncState } from '@vueuse/core'
+import { getChecks } from '@/api'
 
 export const useReportingStore = defineStore('reporting', () => {
-  const checks = ref<Check[]>([])
-
-  return { checks }
+  const api = useAsyncState(getChecks, [])
+  return { ...api }
 })
