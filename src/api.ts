@@ -1,4 +1,4 @@
-import type { Check } from '@/types'
+import type { Check, Stat } from '@/types'
 
 const apiUrl = import.meta.env.VITE_API_URL
 if (!apiUrl) {
@@ -19,4 +19,9 @@ async function request(path: string): Promise<any> {
 export async function getChecks() {
   await new Promise((resolve) => setTimeout(resolve, 1000))
   return (await request('/checks')) as Promise<Check[]>
+}
+
+export async function getStats() {
+  await new Promise((resolve) => setTimeout(resolve, 2000))
+  return (await request('/check_stats')) as Promise<Stat[]>
 }

@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useReportingStore } from '@/store/reporting'
+import { useStatsStore } from '@/store/stats'
+
 import ChecksTable from '@/components/ChecksTable.vue'
 
 const reportingStore = useReportingStore()
+const statsStore = useStatsStore()
 
 const router = useRouter()
 defineProps<{
@@ -31,7 +34,11 @@ defineProps<{
       @update:activeId="
         (activeId: string) => router.push({ name: 'reporting', params: { activeId } })
       "
-      >{{ activeId }}
+    >
+      <template v-if="activeId">
+        <p v-if="statsStore.isLoading">Loading...</p>
+        <json-viewer :value="JSON.stringify({ datums: statsStore.statsByCheckId(activeId) })" />
+      </template>
     </ChecksTable>
   </section>
 </template>
