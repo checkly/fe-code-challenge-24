@@ -4,6 +4,7 @@ import { useReportingStore } from '@/store/reporting'
 import { useStatsStore } from '@/store/stats'
 
 import ChecksTable from '@/components/ChecksTable.vue'
+import StatsChart from '@/components/StatsChart.vue'
 
 const reportingStore = useReportingStore()
 const statsStore = useStatsStore()
@@ -37,7 +38,7 @@ defineProps<{
     >
       <template v-if="activeId">
         <p v-if="statsStore.isLoading">Loading...</p>
-        <json-viewer :value="JSON.stringify({ datums: statsStore.statsByCheckId(activeId) })" />
+        <StatsChart :stats="statsStore.statsByCheckId(activeId)" />
       </template>
     </ChecksTable>
   </section>
