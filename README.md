@@ -2,15 +2,11 @@
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[VSCode](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+## Type Support for `.vue` Imports in TypeScript
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
 ## Project Setup
 
@@ -24,16 +20,32 @@ Create `.env` file
 cp .env.example .env
 ```
 
+### Mock backend API
+
+Run the `backend` script. It randomly generates and then serves the data required by the frontend app.
+
+```bash
+$ npm run backend
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Building for Production
+
+Type-check, compile and minify
 
 ```sh
 npm run build
+```
+
+Open the build in the browser
+
+```sh
+npm run preview
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
@@ -74,19 +86,11 @@ Reusable components are located on `src/components/library`
 Existing components can be imported on the vue application via
 
 ```js
-import Icon from './src/components/library/icon'
+import Icon from '@/components/library/icon'
 ```
 
 #### Storybook
 
 ```bash
 $ npm run storybook
-```
-
-### Backend
-
-Consume the data provided by the mock API
-
-```bash
-$ npm run backend
 ```
