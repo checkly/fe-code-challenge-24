@@ -13,11 +13,11 @@ defineEmits(['update:activeId'])
 </script>
 
 <template>
-  <table>
+  <table width="100%">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
+        <th width="20%">Name</th>
         <th>Success</th>
         <th>Avg</th>
         <th>P95</th>
@@ -43,3 +43,13 @@ defineEmits(['update:activeId'])
     </tbody>
   </table>
 </template>
+
+<style>
+th {
+  text-align: left;
+}
+th,
+td {
+  padding: 0.5em;
+}
+</style>
