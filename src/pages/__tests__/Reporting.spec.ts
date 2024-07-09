@@ -2,27 +2,30 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount, VueWrapper } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useReportingStore } from '@/store/reporting'
-import type { ReportingStore } from '@/types'
+import type { TStore, Check } from '@/types'
 
 import Reporting from '../Reporting.vue'
 import { nextTick } from 'vue'
+import { router } from '@/router'
 
 describe('Reporting', () => {
   let wrapper: VueWrapper
-  let store: ReportingStore
+  let store: TStore<Check[]>
 
   beforeEach(() => {
+    const initialState: TStore<Check[]> = {
+      state: [],
+      isLoading: false,
+      isReady: false,
+      error: null
+    }
     wrapper = mount(Reporting, {
       global: {
         plugins: [
+          router,
           createTestingPinia({
             createSpy: vi.fn,
-            initialState: {
-              state: [],
-              isloading: false,
-              isReadt: false,
-              error: null
-            }
+            initialState
           })
         ]
       }

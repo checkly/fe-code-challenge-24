@@ -8,8 +8,8 @@ export interface Check {
   p99: number
 }
 
-export interface ReportingStore {
-  state: Check[]
+export interface TStore<T> {
+  state: T
   error: unknown
   isLoading: boolean
   isReady: boolean

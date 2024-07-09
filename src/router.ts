@@ -1,10 +1,17 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 
 import Reporting from '@/pages/Reporting.vue'
 
-const routes = [{ path: '/', component: Reporting }]
+const routes = [
+  {
+    name: 'reporting',
+    path: '/:activeId?',
+    component: Reporting,
+    props: true
+  }
+]
 
 export const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes
 })

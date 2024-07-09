@@ -1,11 +1,21 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { useReportingStore } from '@/store/reporting'
+import ChecksTable from '@/components/ChecksTable.vue'
+
 const reportingStore = useReportingStore()
+
+const router = useRouter()
+defineProps<{
+  activeId?: string
+}>()
 </script>
 
 <template>
   <header>
-    <h1>Reporting</h1>
+    <h1>
+      <RouterLink :to="{ name: 'reporting' }"> Reporting </RouterLink>
+    </h1>
     <p>
       Analyse long term performance of your checks and export aggregated metrics for external
       reporting duties.
@@ -14,11 +24,14 @@ const reportingStore = useReportingStore()
   <section>
     <p v-if="reportingStore.isLoading">Loading...</p>
     <p v-if="reportingStore.error">{{ reportingStore.error }}</p>
-    <template v-if="reportingStore.isReady">
-      <div v-for="check in reportingStore.state" :key="check.id">
-        {{ check.name }}: {{ check.type }}
-        <json-viewer :value="JSON.stringify(check)" />
-      </div>
-    </template>
+    <ChecksTable
+      v-if="reportingStore.isReady"
+      :checks="reportingStore.state"
+      :active-id="activeId"
+      @update:activeId="
+        (activeId: string) => router.push({ name: 'reporting', params: { activeId } })
+      "
+      >{{ activeId }}
+    </ChecksTable>
   </section>
 </template>
