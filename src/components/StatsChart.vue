@@ -4,13 +4,14 @@ import type { Stat } from '@/types'
 import Chart from './Chart.vue'
 import type { SeriesItem } from '@/components/Chart.vue'
 
+type ChartName = 'success' | 'responseTime'
 const props = defineProps<{
   stats: Stat[]
 }>()
 
-const activeChart = ref<'success' | 'responseTime'>('responseTime')
+const activeChart = ref<ChartName>('responseTime')
 const data = ref<Record<
-  'success' | 'responseTime',
+  ChartName,
   {
     title: string
     series: SeriesItem[]
@@ -81,18 +82,20 @@ function presenter(data?: Stat[]) {
 </script>
 
 <template>
-  <div v-if="data && data[activeChart]" style="position: relative">
-    <div style="position: absolute; top: 1em; right: 1em; z-index: 1; display: flex; gap: 1em">
-      <component
-        :is="activeChart === 'responseTime' ? 'span' : 'button'"
-        @click="() => (activeChart = 'responseTime')"
-        >Response time</component
+  <div v-if="data && data[activeChart]" class="relative">
+    <div class="absolute right-10 top-2 z-10 flex gap-2">
+      <button
+        v-for="chartId in ['responseTime', 'success']"
+        :key="chartId"
+        @click="() => (activeChart = chartId as ChartName)"
+        class="btn btn-sm text-wide text-xs"
+        :class="{
+          'bg-blue-500 text-white': activeChart === chartId,
+          'bg-gray-200': activeChart !== chartId
+        }"
       >
-      <component
-        :is="activeChart === 'success' ? 'span' : 'button'"
-        @click="() => (activeChart = 'success')"
-        >Success</component
-      >
+        {{ chartId.replace(/([A-Z])/g, ' $1').toUpperCase() }}
+      </button>
     </div>
     <Chart v-bind="data[activeChart]" />
   </div>
