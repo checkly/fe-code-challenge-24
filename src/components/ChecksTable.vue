@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Check } from '@/types'
+import { formatSuccessValue, formatResponseTimeValue } from '@/formatters'
 
 withDefaults(
   defineProps<{
@@ -32,10 +33,10 @@ defineEmits(['update:activeId'])
           </td>
           <td>{{ check.type }}</td>
           <td>{{ check.name }}</td>
-          <td>{{ check.success }}</td>
-          <td>{{ check.avg }}</td>
-          <td>{{ check.p95 }}</td>
-          <td>{{ check.p99 }}</td>
+          <td>{{ formatSuccessValue(check.success) }}</td>
+          <td>{{ formatResponseTimeValue(check.avg) }}</td>
+          <td>{{ formatResponseTimeValue(check.p95) }}</td>
+          <td>{{ formatResponseTimeValue(check.p99) }}</td>
         </tr>
         <tr v-if="activeId === check.id">
           <td colspan="6">
