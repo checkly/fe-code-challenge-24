@@ -12,5 +12,9 @@ const statsStore = useStatsStore()
 <template>
   <BaseSpinner v-if="statsStore.isLoading" />
   <p v-if="statsStore.error">{{ statsStore.error }}</p>
-  <StatsChart v-if="statsStore.isReady" :stats="statsStore.statsByCheckId(activeId)" />
+  <StatsChart
+    v-if="statsStore.isReady"
+    :stats="statsStore.statsByCheckId(activeId)"
+    class="w-full"
+  />
 </template>
