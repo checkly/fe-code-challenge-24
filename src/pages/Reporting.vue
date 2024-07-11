@@ -13,17 +13,15 @@ defineProps<{
 </script>
 
 <template>
-  <header>
-    <h1>
-      <RouterLink :to="{ name: 'reporting' }"> Reporting </RouterLink>
-    </h1>
+  <header class="mb-10">
+    <h2 class="typography-h2 heading mb-2">Reporting</h2>
     <p>
       Analyse long term performance of your checks and export aggregated metrics for external
       reporting duties.
     </p>
   </header>
   <section>
-    <p v-if="reportingStore.isLoading">Loading...</p>
+    <BaseSpinner v-if="reportingStore.isLoading" />
     <p v-if="reportingStore.error">{{ reportingStore.error }}</p>
     <ChecksTable
       v-if="reportingStore.isReady"

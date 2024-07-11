@@ -10,7 +10,7 @@ const statsStore = useStatsStore()
 </script>
 
 <template>
-  <p v-if="statsStore.isLoading">Loading...</p>
+  <BaseSpinner v-if="statsStore.isLoading" />
   <p v-if="statsStore.error">{{ statsStore.error }}</p>
   <StatsChart v-if="statsStore.isReady" :stats="statsStore.statsByCheckId(activeId)" />
 </template>
