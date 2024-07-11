@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import * as Highcharts from 'highcharts'
 import { createHighcharts } from 'vue-highcharts'
+import accessibility from 'highcharts/modules/accessibility'
+accessibility(Highcharts)
+
 export interface SeriesItem {
   name: string
   type: string
@@ -29,10 +32,9 @@ function chartOptions(series: SeriesItem[], units: string, min: number): Highcha
       },
       marginLeft: 60,
       marginRight: 100,
-      spacingTop: 50,
-      spacingBottom: 10,
-      height: 250,
-      backgroundColor: 'aliceblue'
+      spacingTop: 60,
+      spacingBottom: 20,
+      height: 250
     },
     xAxis: {
       type: 'datetime',
@@ -61,6 +63,18 @@ function chartOptions(series: SeriesItem[], units: string, min: number): Highcha
     },
     tooltip: {
       valueSuffix: units
+    },
+    accessibility: {
+      keyboardNavigation: {
+        focusBorder: {
+          style: {
+            lineWidth: 3,
+            color: '#aa1111',
+            borderRadius: 5
+          },
+          margin: 4
+        }
+      }
     },
     series: series as Highcharts.SeriesOptionsType[]
   }
