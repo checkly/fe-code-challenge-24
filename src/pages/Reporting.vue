@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useReportingStore } from '@/store/reporting'
-import { useStatsStore } from '@/store/stats'
-
 import ChecksTable from '@/components/ChecksTable.vue'
-import StatsChart from '@/components/StatsChart.vue'
+import ActiveCheckStats from '@/partials/ActiveCheckStats.vue'
 
 const reportingStore = useReportingStore()
-const statsStore = useStatsStore()
-
 const router = useRouter()
+
 defineProps<{
   activeId?: string
 }>()
@@ -33,13 +30,11 @@ defineProps<{
       :checks="reportingStore.state"
       :active-id="activeId"
       @update:activeId="
-        (activeId: string) => router.push({ name: 'reporting', params: { activeId } })
+        (id: string) =>
+          router.push({ name: 'reporting', params: { activeId: id === activeId ? null : id } })
       "
     >
-      <template v-if="activeId">
-        <p v-if="statsStore.isLoading">Loading...</p>
-        <StatsChart :stats="statsStore.statsByCheckId(activeId)" />
-      </template>
+      <ActiveCheckStats v-if="activeId" :activeId="activeId" />
     </ChecksTable>
   </section>
 </template>

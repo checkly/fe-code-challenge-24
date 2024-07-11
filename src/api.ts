@@ -22,6 +22,6 @@ export async function getChecks() {
 }
 
 export async function getStats() {
-  await new Promise((resolve) => setTimeout(resolve, 2000))
+  await new Promise((resolve) => setTimeout(resolve, 1000))
   return (await request('/check_stats')) as Promise<Stat[]>
 }
