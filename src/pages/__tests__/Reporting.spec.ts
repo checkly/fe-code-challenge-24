@@ -5,6 +5,8 @@ import { useReportingStore } from '@/store/reporting'
 import type { TStore, Check } from '@/types'
 
 import Reporting from '../Reporting.vue'
+import BaseSpinner from '@/components/library/spinner/Spinner.vue'
+import BaseIcon from '@/components/library/icon/Icon.vue'
 import { nextTick } from 'vue'
 import { router } from '@/router'
 
@@ -21,6 +23,7 @@ describe('Reporting', () => {
     }
     wrapper = mount(Reporting, {
       global: {
+        components: { BaseSpinner, BaseIcon },
         plugins: [
           router,
           createTestingPinia({
@@ -34,7 +37,8 @@ describe('Reporting', () => {
   })
 
   it('starts loading imediately', () => {
-    expect(wrapper.text()).toContain('Loading...')
+    expect(store.isLoading).toBe(true)
+    expect(wrapper.findComponent(BaseSpinner).exists()).toBe(true)
   })
 
   it('renders error', async () => {
@@ -42,7 +46,7 @@ describe('Reporting', () => {
     store.error = 'Something went wrong'
     await nextTick()
     expect(wrapper.text()).toContain('Something went wrong')
-    expect(wrapper.text()).not.toContain('Loading...')
+    expect(wrapper.findComponent(BaseSpinner).exists()).toBe(false)
   })
 
   it('renders checks', async () => {
@@ -72,6 +76,6 @@ describe('Reporting', () => {
 
     expect(wrapper.text()).toContain('Check 0')
     expect(wrapper.text()).toContain('Check 1')
-    expect(wrapper.text()).not.toContain('Loading...')
+    expect(wrapper.findComponent(BaseSpinner).exists()).toBe(false)
   })
 })
