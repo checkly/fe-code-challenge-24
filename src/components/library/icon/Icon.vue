@@ -5,7 +5,7 @@ import type { IconName } from '@primer/octicons'
 const props = withDefaults(
   defineProps<{
     name: IconName
-    width: number
+    width?: number
   }>(),
   { width: 16 }
 )
