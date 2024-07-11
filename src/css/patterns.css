@@ -1,0 +1,73 @@
+.heading {
+  --tw-text-opacity: 1;
+  color: rgb(33 41 48 / var(--tw-text-opacity));
+}
+
+.typography {
+  font-family: Inter, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.typography-h1 {
+  @apply font-semibold text-3xl ;
+}
+
+.typography-h2 {
+  @apply font-semibold text-2xl;
+}
+
+.typography-h3 {
+  @apply font-semibold text-xl;
+}
+
+.typography-h4 {
+  @apply font-semibold text-lg;
+}
+
+.brdr {
+  @apply border-gray-200
+}
+
+.brdr-b {
+  @apply brdr border-b-[1px]
+}
+
+/* Buttons */
+.btn,
+.btn-sm {
+  @apply inline-flex items-center justify-center rounded leading-5 whitespace-nowrap transition duration-150 ease-in-out;
+}
+
+.btn {
+  @apply px-5 py-2.5 text-sm;
+}
+
+.btn-sm {
+  @apply px-3 py-1 text-xs;
+}
+
+/* Forms */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.form-input {
+  @apply bg-white border border-gray-300 focus:border-indigo-500 rounded text-sm px-3 py-2 placeholder-gray-400;
+}
+
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}

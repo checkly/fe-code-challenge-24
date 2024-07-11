@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=fallback');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './patterns';
+
+@layer base {
+    html {
+        font-size: 16px;
+        height: 100%;
+    }
+
+    body {
+        --tw-text-opacity: 1;
+        @apply typography text-sm text-gray-600;
+        height: 100%;
+    }
+
+    strong {
+        @apply font-semibold
+    }
+
+    p {
+        line-height: 1.35;
+        @apply text-gray-600 my-2;
+    }
+
+    a {
+        --tw-text-opacity: 1;
+        @apply text-blue-600;
+    }
+
+    nav {
+        @apply bg-gray-50 brdr border-r-[1px]
+
+    }
+
+    main {
+        @apply overflow-y-auto
+    }
+
+    th {
+        @apply heading uppercase font-semibold border-b-[2px] text-xs
+    }
+
+    td {
+        @apply text-xs
+    }
+}
+@layer utilities {}
+
+@layer components {
+    .td-short {
+        @apply w-[100px];
+    }
+    .tr-active {
+        @apply bg-gray-50;
+    }
+    .tr {
+        & td {
+            @apply brdr-b;
+        }
+        &.tr-expandable {
+            @apply cursor-pointer;
+            &.tr-active td {
+                @apply border-b-0
+            }
+        }
+        &.tr-active {
+            @apply border-l-[1px] border-r-[1px];
+        }
+    }
+}
