@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
-import Icon from './Icon.vue';
+import type { Meta, StoryObj } from '@storybook/vue3'
+import Icon from './Icon.vue'
 
 const meta = {
   title: 'Icon',
@@ -7,27 +7,35 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {},
   args: {},
-} satisfies Meta<typeof Icon>;
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Built with **Octicons** - a scalable set of icons handcrafted by GitHub. https://primer.style/foundations/icons'
+      }
+    }
+  }
+} satisfies Meta<typeof Icon>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    name: 'ruby',
-  },
-};
+    name: 'ruby'
+  }
+}
 
 export const Large: Story = {
   args: {
     name: 'ruby',
-    width: 32,
-  },
-};
+    width: 32
+  }
+}
 
 export const Small: Story = {
   args: {
     name: 'ruby',
-    width: 12,
-  },
-};
+    width: 12
+  }
+}
