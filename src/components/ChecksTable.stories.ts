@@ -53,19 +53,33 @@ const checks: Check[] = [
   }
 ]
 
-const render = (args: any) => ({
-  setup() {
-    const localValue = ref('')
-    return { args, localValue }
-  },
-  components: { ChecksTable },
-  template:
-    '<ChecksTable v-bind="args" :activeId="localValue" @update:activeId="id => localValue = id">Last week\'s stats for this check</ChecksTable>'
-})
-
-export const Initial: Story = {
-  render,
+export const Simple: Story = {
+  render: (args: any) => ({
+    setup() {
+      const localValue = ref('')
+      return { args, localValue }
+    },
+    components: { ChecksTable },
+    template:
+      '<ChecksTable v-bind="args" :activeId="localValue" @update:activeId="id => localValue = id"><div class="py-3 text-center">Last week\'s stats placeholder.</div></ChecksTable>'
+  }),
   args: {
     checks
+  }
+}
+
+export const Loading: Story = {
+  render: (args: any) => ({
+    setup() {
+      const localValue = ref('')
+      return { args, localValue }
+    },
+    components: { ChecksTable },
+    template:
+      '<ChecksTable v-bind="args" :activeId="localValue" @update:activeId="id => localValue = id"><div class="py-3 text-center"><BaseSpinner /></div></ChecksTable>'
+  }),
+  args: {
+    checks,
+    activeId: '599ff38c-35e9-4d9d-b5db-c942b02e1adf'
   }
 }
