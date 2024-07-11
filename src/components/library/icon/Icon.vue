@@ -21,5 +21,5 @@ function getSvg() {
 </script>
 
 <template>
-  <div v-html="getSvg()" style="display: inline" />
+  <span v-html="getSvg()" />
 </template>
