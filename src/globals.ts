@@ -17,7 +17,10 @@ export const GlobalComponents = {
         const componentName = filePath
           .split('/')
           .pop()
-          .replace(/\.\w+$/, '')
+          ?.replace(/\.\w+$/, '')
+        if (!componentName) {
+          return
+        }
         app.component(prefix + pascalCase(componentName), (module as ModuleImportInterface).default)
       })
     }
