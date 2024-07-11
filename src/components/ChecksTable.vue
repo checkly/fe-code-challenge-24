@@ -16,7 +16,7 @@ defineEmits(['update:activeId'])
   <table width="100%">
     <thead>
       <tr>
-        <th>Type</th>
+        <th colspan="2">Type</th>
         <th width="20%">Name</th>
         <th>Success</th>
         <th>Avg</th>
@@ -27,6 +27,9 @@ defineEmits(['update:activeId'])
     <tbody>
       <template v-for="check in checks" :key="check.id">
         <tr @click="$emit('update:activeId', check.id)" style="cursor: pointer">
+          <td>
+            <BaseIcon :name="activeId === check.id ? 'chevron-down' : 'chevron-right'" />
+          </td>
           <td>{{ check.type }}</td>
           <td>{{ check.name }}</td>
           <td>{{ check.success }}</td>
