@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount, VueWrapper } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { useReportingStore } from '@/store/reporting'
+import { useChecksStore } from '@/store/checks'
 import type { TStore, Check } from '@/types'
 
 import Checks from '../Checks.vue'
@@ -33,7 +33,7 @@ describe('Checks', () => {
         ]
       }
     })
-    store = useReportingStore() // uses the testing pinia
+    store = useChecksStore() // uses the testing pinia
   })
 
   it('starts loading imediately', () => {

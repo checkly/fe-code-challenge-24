@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useReportingStore } from '@/store/reporting'
+import { useChecksStore } from '@/store/checks'
 import ChecksTable from '@/components/checks-table/ChecksTable.vue'
 
-const reportingStore = useReportingStore()
+const checksStore = useChecksStore()
 
 defineProps<{
   activeId?: string
@@ -14,11 +14,11 @@ defineEmits<{
 </script>
 
 <template>
-  <BaseSpinner v-if="reportingStore.isLoading" />
-  <p v-if="reportingStore.error">{{ reportingStore.error }}</p>
+  <BaseSpinner v-if="checksStore.isLoading" />
+  <p v-if="checksStore.error">{{ checksStore.error }}</p>
   <ChecksTable
-    v-if="reportingStore.isReady"
-    :checks="reportingStore.state"
+    v-if="checksStore.isReady"
+    :checks="checksStore.state"
     :active-id="activeId"
     @update:activeId="(id: string) => $emit('update:activeId', id)"
     ><RouterView />
