@@ -21,5 +21,5 @@ function getSvg() {
 </script>
 
 <template>
-  <span v-html="getSvg()" />
+  <span v-html="getSvg()" role="img" :title="name + ' icon'" />
 </template>
