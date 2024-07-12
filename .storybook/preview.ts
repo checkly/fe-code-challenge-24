@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/vue3'
 import { setup } from '@storybook/vue3'
-import { GlobalComponents } from '@/globals'
+import { GlobalComponents } from '../src/globals'
 import '../src/css/style.css'
 
 setup((app) => {
