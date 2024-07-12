@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import { useReportingStore } from '@/store/reporting'
 import ChecksTable from '@/components/checks-table/ChecksTable.vue'
-import ActiveCheckStats from '@/partials/ActiveCheckStats.vue'
+// import ActiveCheckStats from '@/partials/ActiveCheckStats.vue'
 
 const reportingStore = useReportingStore()
 const router = useRouter()
@@ -29,10 +29,12 @@ defineProps<{
       :active-id="activeId"
       @update:activeId="
         (id: string) =>
-          router.push({ name: 'reporting', params: { activeId: id === activeId ? null : id } })
+          router.push(
+            id === activeId ? { name: 'checks' } : { name: 'check-stats', params: { activeId: id } }
+          )
       "
-    >
-      <ActiveCheckStats v-if="activeId" :activeId="activeId" />
+      ><RouterView />
+      <!-- <ActiveCheckStats v-if="activeId" :activeId="activeId" /> -->
     </ChecksTable>
   </section>
 </template>

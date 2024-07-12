@@ -1,13 +1,23 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-import Reporting from '@/pages/Reporting.vue'
+const Reporting = () => import('@/pages/Reporting.vue')
+const ActiveCheckStats = () => import('@/partials/ActiveCheckStats.vue')
 
 const routes = [
+  { name: 'home', path: '/', redirect: '/checks' },
   {
-    name: 'reporting',
-    path: '/:activeId?',
+    name: 'checks',
+    path: '/checks',
     component: Reporting,
-    props: true
+    props: true,
+    children: [
+      {
+        path: '/:activeId/stats',
+        name: 'check-stats',
+        component: ActiveCheckStats,
+        props: true
+      }
+    ]
   }
 ]
 
