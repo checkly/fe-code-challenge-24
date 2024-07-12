@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Built with **Octicons** - a scalable set of icons handcrafted by GitHub. https://primer.style/foundations/icons'
+          'Built with **Octicons** - a scalable set of icons handcrafted by GitHub. <a href="https://primer.style/foundations/icons" target="_blank">https://primer.style/foundations/icons</a>'
       }
     }
   }
