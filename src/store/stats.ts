@@ -3,7 +3,9 @@ import { useAsyncState } from '@vueuse/core'
 import { getStats } from '@/api'
 
 export const useStatsStore = defineStore('stats', () => {
+  // https://vueuse.org/core/useAsyncState/#useasyncstate
   const api = useAsyncState(getStats, [])
+
   function statsByCheckId(checkId: string) {
     return api.state.value.filter((stat) => stat.checkId === checkId)
   }
