@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
   <header class="mb-10">
-    <h2 class="typography-h2 heading mb-2">Reporting</h2>
+    <h2 class="typography-h2 heading mb-2" role="heading">Reporting</h2>
     <p>
       Analyse long term performance of your checks and export aggregated metrics for external
       reporting duties.

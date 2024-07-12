@@ -13,7 +13,7 @@ const routes = [
     props: true,
     children: [
       {
-        path: '/:activeId/stats',
+        path: ':activeId/stats',
         name: 'check-stats',
         component: CheckStats,
         props: true
