@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import StatsChart from '@/components/StatsChart.vue'
+import StatsChart from '@/components/stats-chart/StatsChart.vue'
 import { useStatsStore } from '@/store/stats'
 
 defineProps<{

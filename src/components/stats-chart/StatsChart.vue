@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Stat } from '@/types'
-import Chart from './Chart.vue'
-import type { SeriesItem } from '@/components/Chart.vue'
+import Chart from '@/components/chart/Chart.vue'
+import type { SeriesItem } from '@/components/chart/Chart.vue'
 
 type ChartName = 'success' | 'responseTime'
 const props = defineProps<{

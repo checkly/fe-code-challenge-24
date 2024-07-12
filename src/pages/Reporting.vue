@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useReportingStore } from '@/store/reporting'
-import ChecksTable from '@/components/ChecksTable.vue'
+import ChecksTable from '@/components/checks-table/ChecksTable.vue'
 import ActiveCheckStats from '@/partials/ActiveCheckStats.vue'
 
 const reportingStore = useReportingStore()
