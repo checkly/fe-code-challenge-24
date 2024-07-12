@@ -11,12 +11,11 @@ export interface SeriesItem {
 }
 const props = withDefaults(
   defineProps<{
-    title?: string
     series?: SeriesItem[]
     min?: number
     units?: string
   }>(),
-  { title: '', units: '', series: () => [] }
+  { series: () => [], min: 0, units: '' }
 )
 const Charts = createHighcharts('Highcharts', Highcharts)
 function chartOptions(series: SeriesItem[], units: string, min: number): Highcharts.Options {
@@ -82,5 +81,5 @@ function chartOptions(series: SeriesItem[], units: string, min: number): Highcha
 </script>
 
 <template>
-  <Charts v-if="series" ref="highchartsRef" :options="chartOptions(props.series, props.units, 0)" />
+  <Charts v-if="series" :options="chartOptions(props.series, props.units, 0)" />
 </template>

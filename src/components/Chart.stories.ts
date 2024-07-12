@@ -1045,7 +1045,6 @@ const responseTimeSeries = [
 export const Success: Story = {
   args: {
     series: successSeries,
-    title: 'Success',
     min: 37,
     units: '%'
   }
@@ -1054,7 +1053,6 @@ export const Success: Story = {
 export const ResponseTime: Story = {
   args: {
     series: responseTimeSeries,
-    title: 'Response Time',
     min: 0,
     units: 's'
   }
