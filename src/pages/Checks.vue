@@ -2,7 +2,6 @@
 import { useRouter } from 'vue-router'
 import { useReportingStore } from '@/store/reporting'
 import ChecksTable from '@/components/checks-table/ChecksTable.vue'
-// import ActiveCheckStats from '@/partials/ActiveCheckStats.vue'
 
 const reportingStore = useReportingStore()
 const router = useRouter()
@@ -34,7 +33,6 @@ defineProps<{
           )
       "
       ><RouterView />
-      <!-- <ActiveCheckStats v-if="activeId" :activeId="activeId" /> -->
     </ChecksTable>
   </section>
 </template>

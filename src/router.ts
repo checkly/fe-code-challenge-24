@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-const Reporting = () => import('@/pages/Reporting.vue')
+const Checks = () => import('@/pages/Checks.vue')
 const NotFound = () => import('@/pages/NotFound.vue')
 const ActiveCheckStats = () => import('@/partials/ActiveCheckStats.vue')
 
@@ -9,7 +9,7 @@ const routes = [
   {
     name: 'checks',
     path: '/checks',
-    component: Reporting,
+    component: Checks,
     props: true,
     children: [
       {

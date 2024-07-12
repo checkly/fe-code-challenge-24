@@ -4,13 +4,13 @@ import { createTestingPinia } from '@pinia/testing'
 import { useReportingStore } from '@/store/reporting'
 import type { TStore, Check } from '@/types'
 
-import Reporting from '../Reporting.vue'
+import Checks from '../Checks.vue'
 import BaseSpinner from '@/components/library/spinner/Spinner.vue'
 import BaseIcon from '@/components/library/icon/Icon.vue'
 import { nextTick } from 'vue'
 import { router } from '@/router'
 
-describe('Reporting', () => {
+describe('Checks', () => {
   let wrapper: VueWrapper
   let store: TStore<Check[]>
 
@@ -21,7 +21,7 @@ describe('Reporting', () => {
       isReady: false,
       error: null
     }
-    wrapper = mount(Reporting, {
+    wrapper = mount(Checks, {
       global: {
         components: { BaseSpinner, BaseIcon },
         plugins: [
