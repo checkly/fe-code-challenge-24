@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 const Checks = () => import('@/pages/Checks.vue')
 const NotFound = () => import('@/pages/NotFound.vue')
-const ActiveCheckStats = () => import('@/partials/ActiveCheckStats.vue')
+const CheckStats = () => import('@/pages/CheckStats.vue')
 
 const routes = [
   { name: 'home', path: '/', redirect: '/checks' },
@@ -15,7 +15,7 @@ const routes = [
       {
         path: '/:activeId/stats',
         name: 'check-stats',
-        component: ActiveCheckStats,
+        component: CheckStats,
         props: true
       }
     ]
