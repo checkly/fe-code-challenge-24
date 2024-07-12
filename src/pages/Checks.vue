@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { useReportingStore } from '@/store/reporting'
-import ChecksTable from '@/components/checks-table/ChecksTable.vue'
+import LatestChecks from '@/partials/LatestChecks.vue'
 
-const reportingStore = useReportingStore()
 const router = useRouter()
 
 defineProps<{
@@ -20,11 +18,7 @@ defineProps<{
     </p>
   </header>
   <section>
-    <BaseSpinner v-if="reportingStore.isLoading" />
-    <p v-if="reportingStore.error">{{ reportingStore.error }}</p>
-    <ChecksTable
-      v-if="reportingStore.isReady"
-      :checks="reportingStore.state"
+    <LatestChecks
       :active-id="activeId"
       @update:activeId="
         (id: string) =>
@@ -32,7 +26,6 @@ defineProps<{
             id === activeId ? { name: 'checks' } : { name: 'check-stats', params: { activeId: id } }
           )
       "
-      ><RouterView />
-    </ChecksTable>
+    />
   </section>
 </template>
