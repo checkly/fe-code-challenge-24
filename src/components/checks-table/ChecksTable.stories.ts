@@ -8,7 +8,14 @@ const meta = {
   component: ChecksTable,
   tags: ['autodocs'],
   argTypes: {},
-  args: {}
+  args: {},
+  parameters: {
+    docs: {
+      description: {
+        component: 'Accessible table view of the lastes checks. Each row is expandable.'
+      }
+    }
+  }
 } satisfies Meta<typeof ChecksTable>
 
 export default meta
@@ -75,11 +82,17 @@ export const Loading: Story = {
       return { args, localValue }
     },
     components: { ChecksTable },
-    template:
-      '<ChecksTable v-bind="args" :activeId="localValue" @update:activeId="id => localValue = id"><div class="py-3 text-center"><BaseSpinner /></div></ChecksTable>'
+    template: '<ChecksTable v-bind="args" :active-id="args.activeId"><BaseSpinner /></ChecksTable>'
   }),
   args: {
     checks,
-    activeId: '599ff38c-35e9-4d9d-b5db-c942b02e1adf'
+    activeId: '297d0228-eba6-49ae-bbf3-892e6d87dcc1'
+  }
+}
+
+export const NotFound: Story = {
+  args: {
+    checks,
+    activeId: '599ff38c-35e9-4d9d-b5db-c942b02e1ada'
   }
 }

@@ -26,6 +26,15 @@ defineEmits(['update:activeId'])
       </tr>
     </thead>
     <tbody>
+      <tr v-if="activeId && !checks.find((check) => check.id === activeId)" class="tr tr-active">
+        <td colspan="100">
+          <div class="flex w-full bg-white px-2 py-2">
+            <p class="font-semibold text-red-500">
+              Check <code class="bg-red-50 px-1 py-1 font-normal">{{ activeId }}</code> not found
+            </p>
+          </div>
+        </td>
+      </tr>
       <template v-for="check in checks" :key="check.id">
         <tr
           @click="$emit('update:activeId', activeId === check.id ? undefined : check.id)"
