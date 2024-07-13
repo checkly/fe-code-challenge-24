@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { Stat } from '@/types'
 import Chart from '@/components/chart/Chart.vue'
-import type { SeriesItem } from '@/components/chart/Chart.vue'
 
 type ChartName = 'success' | 'responseTime'
 const props = defineProps<{
@@ -10,16 +9,9 @@ const props = defineProps<{
 }>()
 
 const activeChart = ref<ChartName>('responseTime')
-const data = ref<Record<
-  ChartName,
-  {
-    title: string
-    series: SeriesItem[]
-    units: string
-    min: number
-  }
-> | null>(null)
-data.value = presenter(props.stats)
+const data = computed(() => {
+  return presenter(props.stats)
+})
 
 function roundup(value: number, decimalPlaces: number = 2) {
   return Number(Math.round(parseFloat(value + 'e' + decimalPlaces)) + 'e-' + decimalPlaces)

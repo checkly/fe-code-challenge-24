@@ -4,11 +4,12 @@ import { createHighcharts } from 'vue-highcharts'
 import accessibility from 'highcharts/modules/accessibility'
 accessibility(Highcharts)
 
-export interface SeriesItem {
+interface SeriesItem {
   name: string
   type: string
   data: number[][]
 }
+
 const props = withDefaults(
   defineProps<{
     series?: SeriesItem[]
