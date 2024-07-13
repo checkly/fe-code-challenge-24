@@ -4,6 +4,6 @@ import { getChecks } from '@/api'
 
 export const useChecksStore = defineStore('checks', () => {
   // https://vueuse.org/core/useAsyncState/#useasyncstate
-  const api = useAsyncState(getChecks, [])
+  const api = useAsyncState(getChecks, [], { immediate: false })
   return { ...api }
 })

@@ -5,7 +5,7 @@ import { ref, computed } from 'vue'
 
 export const useStatsStore = defineStore('stats', () => {
   // https://vueuse.org/core/useAsyncState/#useasyncstate
-  const api = useAsyncState(getStats, [])
+  const api = useAsyncState(getStats, [], { immediate: false })
   const activeId = ref('')
 
   async function load(id: string) {
