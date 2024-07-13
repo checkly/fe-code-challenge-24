@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useChecksStore } from '@/store/checks'
 import ChecksTable from '@/components/checks-table/ChecksTable.vue'
 
 const checksStore = useChecksStore()
-onMounted(() => {
-  checksStore.execute()
-})
+checksStore.execute()
 
 defineProps<{
   activeId?: string
