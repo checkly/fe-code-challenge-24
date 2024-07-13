@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import StatsChart from '@/components/stats-chart/StatsChart.vue'
 import { useStatsStore } from '@/store/stats'
 
@@ -7,6 +8,9 @@ defineProps<{
 }>()
 
 const statsStore = useStatsStore()
+onMounted(() => {
+  statsStore.execute()
+})
 </script>
 
 <template>
