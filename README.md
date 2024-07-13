@@ -94,3 +94,38 @@ import Icon from '@/components/library/icon'
 ```bash
 $ npm run storybook
 ```
+
+## Routing
+
+- `/checks` - list of all the checks, presented as a table
+- `/checks/:activeId/stats` - stats related to the given check, presented as charts within an expanded table row
+- `/` redirects to `/checks`
+- catch everything else 404 page
+
+## State management
+
+- App uses [composable](https://vueuse.org/core/useAsyncState/) provided by a third-party
+- `checks` store manages latest-checks related state and actions.
+- `stats` store manages the state and actions to each particular check.
+- Artificial timeouts are added to imitate response delay.
+
+## Project's structure
+
+- `components` - reusable, mostly stateless or with a minimal local state. Fully covered in Storybook.
+- `pages` - page-level components (to use in `@/router.ts`)
+- `partials` - stateful fragments to be inserted into pages. One partial is coupled with one corresponding store. Potentially testable in Storybook (but I didn't get there), could be tested with unit/feature tests as well, or both.
+- `store` - store modules (Pinia)
+- `css` - styles (Tailwind)
+- `api.ts` - API calls and the `request` function that they use
+- `formatters.ts` - reusable util functions
+- `globals.ts` - holds plugins to be globally registered (currently just one)
+- `router.ts` - router
+- `types.ts` - reusable types and interfaces
+
+## Accessibility
+
+The reccomended approach:
+
+- use native HTML5 where possible
+- test pages with Firefox's accessibility tool
+- test components from the keyboard (`tab`, `space`, `esc` etc.)
