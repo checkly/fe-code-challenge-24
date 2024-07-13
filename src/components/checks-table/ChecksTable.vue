@@ -37,8 +37,8 @@ defineEmits(['update:activeId'])
       </tr>
       <template v-for="check in checks" :key="check.id">
         <tr
-          @click="$emit('update:activeId', activeId === check.id ? undefined : check.id)"
-          @keydown.space="$emit('update:activeId', activeId === check.id ? undefined : check.id)"
+          @click="$emit('update:activeId', check.id)"
+          @keydown.space="$emit('update:activeId', check.id)"
           class="tr tr-expandable"
           :class="{ 'tr-active': activeId === check.id }"
           tabindex="0"
