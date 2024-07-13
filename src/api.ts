@@ -17,11 +17,11 @@ async function request(path: string): Promise<any> {
 }
 
 export async function getChecks() {
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 500))
   return (await request('/checks')) as Promise<Check[]>
 }
 
 export async function getStats() {
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 500))
   return (await request('/check_stats')) as Promise<Stat[]>
 }
