@@ -101,6 +101,7 @@ $ npm run storybook
 - `/checks/:activeId/stats` - stats related to the given check, presented as charts within an expanded table row
 - `/` redirects to `/checks`
 - catch everything else 404 page
+- page title is added using a combination of vue-router's meta fields, navigation guards and a third-party [useTitle](https://vueuse.org/core/useTitle/) composable
 
 ## State management
 
